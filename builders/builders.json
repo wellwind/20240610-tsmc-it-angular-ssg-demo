@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "generate-content-list": {
+      "implementation": "./dist/builders/src/generate-content-list-builder.js",
+      "schema": "./src/schema.json",
+      "description": "Generate content list"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "GenerateContent",
+  "title": "Generate Content",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The title of the content.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

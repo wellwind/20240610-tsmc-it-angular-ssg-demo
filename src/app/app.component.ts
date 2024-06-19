@@ -1,17 +1,36 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AfterViewInit, Component, inject } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
+    <div>
+      <router-outlet />
+    </div>
+    <hr />
+    <div>
+      <a routerLink="/">Home</a>
+      <span class="link-between">|</span>
+      <a routerLink="/about">About</a>
+    </div>
   `,
-  styles: [],
+  styles: [
+    `
+      .link-between {
+        margin: 0 8px;
+      }
+    `,
+  ],
 })
-export class AppComponent {
-  title = 'angular-ssg-demo';
+export class AppComponent implements AfterViewInit {
+  private title = inject(Title);
+  private meta = inject(Meta);
+
+  ngAfterViewInit() {
+    this.title.setTitle('Angular SSG Demo');
+    this.meta.addTag({ name: 'description', content: 'Angular SSG Demo' });
+  }
 }
